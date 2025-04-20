@@ -1,11 +1,16 @@
+using Common.Logging;
 using Discount.API.Services;
 using Discount.Application.Handlers;
 using Discount.Core.Repositories;
 using Discount.Infrastructure.Extensions;
 using Discount.Infrastructure.Repositories;
+using Serilog;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Serilog Configuration
+builder.Host.UseSerilog(Logging.ConfigureLogger);
 
 //Register AutoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
